@@ -9,4 +9,4 @@ insert into chat_users (
     ${email},
     ${hash}
 )
-returning user_id, first_name, last_name, username, email;
+returning user_id, first_name, last_name, email;
