@@ -1,9 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
+import SideMenu from '../SideMenu/SideMenu';
+import MessageDisplay from '../MessageDisplay/MessageDisplay'; 
 
-export default props => {
-    console.log(props.location.state)
+export default class Chat extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            user: this.props.location.state.user
+        }
+    }
 
-    return (
-        <div>Hello there</div>
-    )
+    render(){
+        return (
+            <div className='chat'>
+                <SideMenu user={user}/>
+                
+            </div>
+        )
+    }
 }

@@ -47,11 +47,11 @@ export default props => {
             )
             : null}
             <input value={email} onChange={e => setEmail(e.target.value)}/>
-            <input value={password} onChange={e => setPassword(e.target.value)}/>
+            <input type='password' value={password} onChange={e => setPassword(e.target.value)}/>
             {registerView
             ? (
                 <>
-                    <input value={verPassword} onChange={e => setVerPassword(e.target.value)}/>
+                    <input type='password' value={verPassword} onChange={e => setVerPassword(e.target.value)}/>
                     <button onClick={register}>Register</button>
                     <p>Already have an account? <span onClick={() => setRegisterView(false)}>Log in here</span></p>
                 </>
