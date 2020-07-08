@@ -13,7 +13,6 @@ export default class Chat extends Component {
     render(){
         return (
             <div className='chat'>
-                <SideMenu user={user}/>
                 
             </div>
         )
