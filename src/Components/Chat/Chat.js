@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import SideMenu from '../SideMenu/SideMenu';
+import {connect} from 'react-redux';
 import MessageDisplay from '../MessageDisplay/MessageDisplay'; 
 
-export default class Chat extends Component {
+class Chat extends Component {
     constructor(props){
         super(props);
         this.state = {
-            user: this.props.location.state.user
+            messages: []
         }
     }
 
@@ -18,3 +18,7 @@ export default class Chat extends Component {
         )
     }
 }
+
+const mapStateToProps = reduxState => reduxState;
+
+export default connect(mapStateToProps)(Chat);

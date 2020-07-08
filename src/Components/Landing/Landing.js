@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
+import {connect} from 'react-redux';
 import axios from 'axios';
+import {loginUser} from '../../redux/userReducer';
 
-export default props => {
+const Landing = props => {
     let [firstName, setFirstName] = useState(''),
         [lastName, setLastName] = useState(''),
         [email, setEmail] = useState(''),
@@ -12,10 +14,8 @@ export default props => {
     const login = () => {
         axios.post('/api/login', {email, password})
         .then(res => {
-            props.history.push({
-                pathname: '/dashboard',
-                state: {user: res.data}
-            })
+            props.loginUser(res.data);
+            props.history.push('/chat');
         })
         .catch(err => console.log(err));
     }
@@ -24,10 +24,8 @@ export default props => {
         if(password && password === verPassword){
             axios.post('/api/register', {firstName, lastName, email, password})
             .then(res => {
-                props.history.push({
-                    pathname: '/dashboard',
-                    state: {user: res.data}
-                })
+                props.loginUser(res.data);
+                props.history.push('/chat');
             })
             .catch(err => console.log(err))
         } else {
@@ -65,3 +63,5 @@ export default props => {
         </div>
     )
 }
+
+export default connect(null, {loginUser})(Landing);
