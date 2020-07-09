@@ -13,7 +13,7 @@ module.exports = {
 
         let groupId = await db.group.create_group({groupName, directMessage});
 
-        db.group.user_group_join({user_id, groupId: groupId[0]});
+        db.group.user_group_join({user_id, group_id: groupId[0].group_id});
 
         res.sendStatus(200);
     }
