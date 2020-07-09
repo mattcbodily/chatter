@@ -50,10 +50,12 @@ io.on('connection', socket => {
         io.to(room).emit('room joined', messages);
     });
     socket.on("message sent", async data => {
-        const { group, sender, message } = data;
-        const db = app.get("db");
-        await db.message.create_message({ id: group, sender, message });
-        let messages = await db.message.message_history({ id: group });
+        const { group, sender, message } = data,
+              db = app.get("db");
+
+        console.log(data)
+        await db.message.create_message({ group, sender, message });
+        let messages = await db.message.message_history({ group });
         socket.emit("message dispatched", messages);
       });
     
